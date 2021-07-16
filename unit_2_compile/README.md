@@ -1,0 +1,1 @@
+### click on the file runAll.bat to run the programs ###
