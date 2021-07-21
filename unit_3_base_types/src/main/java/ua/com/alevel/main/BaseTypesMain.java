@@ -19,7 +19,7 @@ public class BaseTypesMain {
             System.out.println("\t2 - Task2(Latin / Cyrillic characters occurrences in string)");
             System.out.println("\t3 - Task3(Problem about End of Lessons)");
             System.out.println("\t0 - exit");
-            String choice2 = mainMenuChoice.next();
+            String choice2 = mainMenuChoice.nextLine();
             switch (choice2) {
                 case "1": {
                     System.out.println("Enter a string:");
