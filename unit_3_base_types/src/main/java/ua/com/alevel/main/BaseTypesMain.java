@@ -40,11 +40,15 @@ public class BaseTypesMain {
                 break;
                 case "3": {
                     System.out.println("Enter the number of lesson from 1 to 10");
-                    int number = scanValue.nextInt();
-                    if (number <= 0 || number > 10) {
-                        System.out.println("You entered an incorrect number");
+                    if (!scanValue.hasNextInt()) {
+                        System.out.println("You entered an invalid value");
                     } else {
-                        lessonEndTime(number);
+                        int number = scanValue.nextInt();
+                        if (number <= 0 || number > 10) {
+                            System.out.println("You entered an incorrect number");
+                        } else {
+                            lessonEndTime(number);
+                        }
                     }
                 }
                 break;
