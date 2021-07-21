@@ -8,7 +8,7 @@ public class Task2 {
 
     public static char[] getLetters(String string) {
         StringBuilder stringBuilder = new StringBuilder();
-        Pattern pattern = Pattern.compile("[a-zA-Zа-яА-ЯЁёїі]+");//а-яА-ЯЁёїі a-zA-Z
+        Pattern pattern = Pattern.compile("[a-zA-Zа-яА-ЯЁёїі]+");
         Matcher matcher = pattern.matcher(string);
         while (matcher.find()) {
             stringBuilder.append(matcher.group());

@@ -19,9 +19,10 @@ public class BaseTypesMain {
             System.out.println("\t2 - Task2(Latin / Cyrillic characters occurrences in string)");
             System.out.println("\t3 - Task3(Problem about End of Lessons)");
             System.out.println("\t0 - exit");
-            int choice = in.nextInt();
-            switch (choice) {
-                case 1: {
+            String choice2 = in.next();
+            //int choice = in.nextInt();
+            switch (choice2) {
+                case "1": {
                     System.out.println("Enter a string:");
                     string = scan.nextLine();
                     int result = sumOfDigitsInString(string);
@@ -32,13 +33,13 @@ public class BaseTypesMain {
                     }
                 }
                 break;
-                case 2: {
+                case "2": {
                     System.out.println("Enter a string:");
                     string = scan.nextLine();
                     charactersOccurrences(string);
                 }
                 break;
-                case 3: {
+                case "3": {
                     System.out.println("Enter the number of lesson from 1 to 10");
                     int number = scan.nextInt();
                     if (number <= 0 || number > 10) {
@@ -48,7 +49,7 @@ public class BaseTypesMain {
                     }
                 }
                 break;
-                case 0: {
+                case "0": {
                     return;
                 }
                 default:
