@@ -20,7 +20,6 @@ public class BaseTypesMain {
             System.out.println("\t3 - Task3(Problem about End of Lessons)");
             System.out.println("\t0 - exit");
             String choice2 = in.next();
-            //int choice = in.nextInt();
             switch (choice2) {
                 case "1": {
                     System.out.println("Enter a string:");
