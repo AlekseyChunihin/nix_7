@@ -1,0 +1,6 @@
+main class всегда должен лежать в рутовом пакете - в данном случае в alevel
+
+int hour, minutes, smallBreak = 5, bigBreak = 15, lessonDuration = 45;
+это нужно выносить в константы в private static final int ...
+
+в целом норм - 9 из 10
