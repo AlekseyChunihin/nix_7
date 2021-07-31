@@ -5,8 +5,7 @@ public class BlankSpace extends ChessBoardSquare {
     public BlankSpace() {
         super("blank");
         representationOfASymbolOnTheSquare = "   ";
-        color = null; //a blank square has no color
-
+        color = null;
     }
 
     @Override

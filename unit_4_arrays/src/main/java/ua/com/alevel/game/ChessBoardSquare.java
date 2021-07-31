@@ -1,11 +1,9 @@
 package ua.com.alevel.game;
 
-import ua.com.alevel.pieces.Piece;
-
 public abstract class ChessBoardSquare {
 
     protected String representationOfASymbolOnTheSquare;
-    public String color;//black, white or null for blanks
+    public String color;
     public String typeOfObjectOnTheSquare;
 
     public ChessBoardSquare(String typeOfObjectOnTheSquare) {

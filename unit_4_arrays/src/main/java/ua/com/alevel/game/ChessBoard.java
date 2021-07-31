@@ -2,15 +2,15 @@ package ua.com.alevel.game;
 
 import ua.com.alevel.pieces.*;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ChessBoard {
 
     private final static Integer ROWS = 8;
     private final static Integer COLUMNS = 8;
-    private static ChessBoardSquare[][] chessboard = new ChessBoardSquare[ROWS][COLUMNS];
-    private final char[] SIDE_LETTERS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-    private final int[] SIDE_NUMBERS = {1, 2, 3, 4, 5, 6, 7, 8};
+    public static ChessBoardSquare[][] chessboard = new ChessBoardSquare[ROWS][COLUMNS];
+    final static char[] SIDE_LETTERS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+    final static int[] SIDE_NUMBERS = {1, 2, 3, 4, 5, 6, 7, 8};
 
     public void initialPlacementOfPiecesOnTheChessBoard() {
         chessboard[0][0] = new Rook("black");
@@ -47,12 +47,10 @@ public class ChessBoard {
         System.out.print("\n   ");
         for (char ch : SIDE_LETTERS) {
             System.out.print("  " + ch + "  ");
-
         }
-        System.out.print("\n   ");//+++
-
+        System.out.print("\n   ");
         for (int i = 0; i < 8; i++) {
-            System.out.print(" --- ");//+++
+            System.out.print(" --- ");
         }
         System.out.println();
         for (int i = 0; i < 8; i++) {
@@ -61,20 +59,65 @@ public class ChessBoard {
                 System.out.print("[" + ch.getRepresentationOfASymbolOnTheSquare() + "]");
             }
             System.out.print(" " + (8 - i) + " ");
-            System.out.print("\n   ");//to get next line
-
+            System.out.print("\n   ");
             for (int j = 0; j < 8; j++) {
                 System.out.print(" --- ");
             }
             System.out.print("\n");
         }
         System.out.print("   ");
-        for (char i : SIDE_LETTERS) { //printing letters across the bottom
+        for (char i : SIDE_LETTERS) {
             System.out.print("  " + i + "  ");
         }
         System.out.print("\n\n");
-
     }
 
+    public String getPlayerName(int playerNumber, String previousName) {
+        String name;
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Player " + playerNumber + " please enter your name.\n>> ");
+            name = scanner.nextLine().trim();
+            if (!name.isEmpty() && !(name.contains(" ") || name.contains("\t")) && !name.equals(previousName))
+                break;
+            else
+                System.out.println("Invalid name. Try again.");
+        }
+        return name;
+    }
+
+    public String checkForCheckOrMate(String plyColor) {
+        for (int kingY = 0; kingY < 8; kingY++) {
+            for (int kingX = 0; kingX < 8; kingX++) {
+                ChessBoardSquare kingSquare = chessboard[kingY][kingX];
+                String kingColor;
+                if (plyColor == "white") {
+                    kingColor = "black";
+                } else { //black
+                    kingColor = "white";
+                }
+                if ((kingSquare.getTypeOfObjectOnTheSquare() == "king") && (kingSquare.getColor() == kingColor)) {
+                    for (int threatY = 0; threatY < 8; threatY++) {
+                        for (int threatX = 0; threatX < 8; threatX++) {
+                            ChessBoardSquare threatSquare = chessboard[threatY][threatX];
+                            if ((threatSquare.getTypeOfObjectOnTheSquare() != "blank") && (threatSquare.getColor() == plyColor)) {
+                                int[] moveFrom = {threatX, threatY};
+                                int[] moveTo = {kingX, kingY};
+                                if (threatSquare.checkMove(moveFrom, moveTo, plyColor, true)) {
+                                    return "check";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public void updateBoard(int[] startLocation, int[] finalLocation) {
+        chessboard[finalLocation[1]][finalLocation[0]] = chessboard[startLocation[1]][startLocation[0]];
+        chessboard[startLocation[1]][startLocation[0]] = new BlankSpace();
+    }
 }
 

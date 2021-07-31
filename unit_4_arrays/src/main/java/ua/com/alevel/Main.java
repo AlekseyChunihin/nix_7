@@ -1,12 +1,11 @@
 package ua.com.alevel;
 
-import ua.com.alevel.game.ChessBoard;
+import ua.com.alevel.game.ChessMatch;
 
 public class Main {
 
     public static void main(String[] args) {
-        ChessBoard chessBoard = new ChessBoard();
-        chessBoard.initialPlacementOfPiecesOnTheChessBoard();
-        chessBoard.drawBoard();
+        ChessMatch chessMatch = new ChessMatch();
+        chessMatch.startMatch();
     }
 }
