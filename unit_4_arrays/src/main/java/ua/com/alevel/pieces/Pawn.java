@@ -6,11 +6,11 @@ import ua.com.alevel.game.ChessBoardSquare;
 public class Pawn extends Piece {
 
     public Pawn(String color) {
-        super(color, "queen");
+        super(color, "pawn");
         if (color.equals("white")) {
-            this.representationOfASymbolOnTheSquare = " ♙ ";
+            this.representationOfASymbolOnTheSquare = "wPa";
         } else if (color.equals("black")) {
-            this.representationOfASymbolOnTheSquare = " ♟ ";
+            this.representationOfASymbolOnTheSquare = "bPa";
         }
     }
 

@@ -6,11 +6,11 @@ import ua.com.alevel.game.ChessBoardSquare;
 public class Bishop extends Piece {
 
     public Bishop(String color) {
-        super(color, "knight");
+        super(color, "bishop");
         if (color.equals("white")) {
-            this.representationOfASymbolOnTheSquare = " ♗ ";
+            this.representationOfASymbolOnTheSquare = "wBi";
         } else if (color.equals("black")) {
-            this.representationOfASymbolOnTheSquare = " ♝ ";
+            this.representationOfASymbolOnTheSquare = "bBi";
         }
     }
 

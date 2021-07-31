@@ -3,8 +3,9 @@ package ua.com.alevel.game;
 public class ChessMatch {
     public void startMatch() {
         ChessBoard chessBoard = new ChessBoard();
-        System.out.println("############WELCOME TO CHESS GAME############");
-        System.out.println("IF PLAYER WANTS TO SURRENDER HE MUST ENTER:resign");
+        System.out.println("################################WELCOME TO CHESS GAME################################");
+        System.out.println("\t\tIF PLAYER WANTS TO SURRENDER HE MUST ENTER:resign");
+        System.out.println("Pa-Pawn\nBi-Bishop\nKi-King\nKn-Knight\nQu-Queen\nRo-Rook");
         String name1 = chessBoard.getPlayerName(1, null);
         String name2 = chessBoard.getPlayerName(2, name1);
         Player player1 = new Player(name1, "white");

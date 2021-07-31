@@ -8,9 +8,9 @@ public class Knight extends Piece {
     public Knight(String color) {
         super(color, "knight");
         if (color.equals("white")) {
-            this.representationOfASymbolOnTheSquare = " ♘ ";
+            this.representationOfASymbolOnTheSquare = "wKn";
         } else if (color.equals("black")) {
-            this.representationOfASymbolOnTheSquare = " ♞ ";
+            this.representationOfASymbolOnTheSquare = "bKn";
         }
     }
 

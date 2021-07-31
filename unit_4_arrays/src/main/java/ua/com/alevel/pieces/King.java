@@ -6,11 +6,11 @@ import ua.com.alevel.game.ChessBoardSquare;
 public class King extends Piece {
 
     public King(String color) {
-        super(color, "knight");
+        super(color, "king");
         if (color.equals("white")) {
-            this.representationOfASymbolOnTheSquare = " ♔ ";
+            this.representationOfASymbolOnTheSquare = "wKi";
         } else if (color.equals("black")) {
-            this.representationOfASymbolOnTheSquare = " ♚ ";
+            this.representationOfASymbolOnTheSquare = "bKi";
         }
     }
 

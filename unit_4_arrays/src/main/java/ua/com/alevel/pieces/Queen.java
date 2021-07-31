@@ -8,9 +8,9 @@ public class Queen extends Piece {
     public Queen(String color) {
         super(color, "queen");
         if (color.equals("white")) {
-            this.representationOfASymbolOnTheSquare = " ♕ ";
+            this.representationOfASymbolOnTheSquare = "wQu";
         } else if (color.equals("black")) {
-            this.representationOfASymbolOnTheSquare = " ♛ ";
+            this.representationOfASymbolOnTheSquare = "bQu";
         }
     }
 

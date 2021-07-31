@@ -8,9 +8,9 @@ public class Rook extends Piece {
     public Rook(String color) {
         super(color, "rook");
         if (color.equals("white")) {
-            this.representationOfASymbolOnTheSquare = " ♖ ";
+            this.representationOfASymbolOnTheSquare = "wRo";
         } else if (color.equals("black")) {
-            this.representationOfASymbolOnTheSquare = " ♜ ";
+            this.representationOfASymbolOnTheSquare = "bRo";
         }
     }
 
