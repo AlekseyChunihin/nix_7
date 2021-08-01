@@ -5,6 +5,7 @@ import ua.com.alevel.utils.ReverseString;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner mainMenuChoice = new Scanner(System.in);
         while (true) {
