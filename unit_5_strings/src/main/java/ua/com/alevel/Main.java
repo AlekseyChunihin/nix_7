@@ -1,7 +1,5 @@
 package ua.com.alevel;
 
-import ua.com.alevel.utils.ReverseString;
-
 import java.util.Scanner;
 
 public class Main {
