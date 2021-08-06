@@ -40,6 +40,7 @@ public class Main {
                         }
                     } while (size < 0);
                     int[] arr = new int[size];
+                    System.out.println("Input " + size + " figures");
                     for (int i = 0; i < arr.length; i++) {
                         while (!scanValue.hasNextInt()) {
                             System.out.println("You have entered incorrect value, try again");
@@ -127,7 +128,6 @@ public class Main {
                 }
                 break;
                 case "0": {
-                    System.out.println("!!!!!!!");
                     return;
                 }
                 default:
