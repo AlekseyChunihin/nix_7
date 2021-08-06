@@ -44,6 +44,9 @@ public class ChessBoard {
     }
 
     public void drawBoard() {
+        System.out.print("\n");
+        System.out.println("|IF PLAYER WANTS TO SURRENDER HE MUST ENTER:resign|");
+        System.out.println("---------------------------------------------------");
         System.out.print("\n   ");
         for (char ch : SIDE_LETTERS) {
             System.out.print("  " + ch + "  ");
