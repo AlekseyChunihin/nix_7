@@ -23,7 +23,7 @@ public class Bishop extends Piece {
         ChessBoardSquare toSquare = ChessBoard.chessboard[moveToY][moveToX];
         int moveDistance = Math.abs(moveToX - moveFromX);
         if (!testKing) {
-            if (toSquare.getTypeOfObjectOnTheSquare() == "king") {
+            if (toSquare.getTypeOfObjectOnTheSquare().equals("king")) {
                 return false;
             }
         }
@@ -43,18 +43,18 @@ public class Bishop extends Piece {
         }
         ChessBoardSquare testSquare;
         for (int diagMoveAway = 1; diagMoveAway <= moveDistance; diagMoveAway++) {
-            if (direction == "topRite") {
+            if (direction.equals("topRite")) {
                 testSquare = ChessBoard.chessboard[moveFromY - diagMoveAway][moveFromX + diagMoveAway];
-            } else if (direction == "botRite") {
+            } else if (direction.equals("botRite")) {
                 testSquare = ChessBoard.chessboard[moveFromY + diagMoveAway][moveFromX + diagMoveAway];
-            } else if (direction == "topLeft") {
+            } else if (direction.equals("topLeft")) {
                 testSquare = ChessBoard.chessboard[moveFromY - diagMoveAway][moveFromX - diagMoveAway];
             } else { //botLeft
                 testSquare = ChessBoard.chessboard[moveFromY + diagMoveAway][moveFromX - diagMoveAway];
             }
-            if ((testSquare.getTypeOfObjectOnTheSquare() != "blank") && (diagMoveAway != moveDistance)) {
+            if (!testSquare.getTypeOfObjectOnTheSquare().equals("blank") && (diagMoveAway != moveDistance)) {
                 return false;
-            } else if ((diagMoveAway == moveDistance) && ((testSquare.getColor() != playerColor) || (testSquare.getTypeOfObjectOnTheSquare() == "blank"))) {
+            } else if ((diagMoveAway == moveDistance) && (!testSquare.getColor().equals(playerColor) || (testSquare.getTypeOfObjectOnTheSquare().equals("blank")))) {
                 return true;
             }
         }

@@ -25,11 +25,11 @@ public class Pawn extends Piece {
         int pawnRowOnPlySide;
         ChessBoardSquare toSquare = ChessBoard.chessboard[moveToY][moveToX];
         if (!testKing) {
-            if (toSquare.getTypeOfObjectOnTheSquare() == "king") {
+            if (toSquare.getTypeOfObjectOnTheSquare().equals("king")) {
                 return false;
             }
         }
-        if (playerColor == "white") {
+        if (playerColor.equals("white")) {
             moveForwardTwo = -2;
             moveForwardOne = -1;
             pawnRowOnPlySide = 6;
@@ -40,13 +40,13 @@ public class Pawn extends Piece {
         }
         if (moveToY == moveFromY + moveForwardOne) {
             if ((moveToX == moveFromX - 1) || (moveToX == moveFromX + 1)) {
-                if ((toSquare.getTypeOfObjectOnTheSquare() != "blank") && (toSquare.getColor() != playerColor)) {
+                if (!toSquare.getTypeOfObjectOnTheSquare().equals("blank") && !toSquare.getColor().equals(playerColor)) {
                     return true;
                 }
-            } else if ((moveToX == moveFromX) && (toSquare.getTypeOfObjectOnTheSquare() == "blank")) {
+            } else if ((moveToX == moveFromX) && toSquare.getTypeOfObjectOnTheSquare().equals("blank")) {
                 return true;
             }
-        } else if ((moveToY == moveFromY + moveForwardTwo) && (moveToX == moveFromX) && (toSquare.getTypeOfObjectOnTheSquare() == "blank")) {
+        } else if ((moveToY == moveFromY + moveForwardTwo) && (moveToX == moveFromX) && toSquare.getTypeOfObjectOnTheSquare().equals("blank")) {
             if (moveFromY == pawnRowOnPlySide) {
                 return true;
             }

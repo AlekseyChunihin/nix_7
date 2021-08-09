@@ -24,9 +24,9 @@ public class King extends Piece {
         for (int moveAwayX = -1; moveAwayX <= 1; moveAwayX++) {
             for (int moveAwayY = -1; moveAwayY <= 1; moveAwayY++) {
                 if (moveToX == moveFromX + moveAwayX && moveToY == moveFromY + moveAwayY) {
-                    if ((toSquare.getTypeOfObjectOnTheSquare() != "blank") && (toSquare.getColor() != playerColor)) {
+                    if (!toSquare.getTypeOfObjectOnTheSquare().equals("blank") && toSquare.getColor().equals(playerColor)) {
                         return true;
-                    } else if (toSquare.getTypeOfObjectOnTheSquare() == "blank") {
+                    } else if (toSquare.getTypeOfObjectOnTheSquare().equals("blank")) {
                         return true;
                     }
                 }

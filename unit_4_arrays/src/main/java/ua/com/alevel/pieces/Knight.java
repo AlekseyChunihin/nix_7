@@ -22,7 +22,7 @@ public class Knight extends Piece {
         int moveToY = moveToReq[1];
         ChessBoardSquare toSquare = ChessBoard.chessboard[moveToY][moveToX];
         if (!testKing) {
-            if (toSquare.getTypeOfObjectOnTheSquare() == "king") {
+            if (toSquare.getTypeOfObjectOnTheSquare().equals("king")) {
                 return false;
             }
         }
@@ -47,7 +47,7 @@ public class Knight extends Piece {
             }
         }
         if (locationPass) {
-            if ((toSquare.getTypeOfObjectOnTheSquare() == "blank") || (toSquare.getColor() != playerColor)) {
+            if (toSquare.getTypeOfObjectOnTheSquare().equals("blank") || !toSquare.getColor().equals(playerColor)) {
                 return true;
             }
         }
