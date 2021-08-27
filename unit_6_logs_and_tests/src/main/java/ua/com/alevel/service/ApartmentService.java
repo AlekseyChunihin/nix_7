@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 
 public class ApartmentService {
 
-    private final InMemoryApartmentDao apartmentDao = new InMemoryApartmentDao();
-
     private static final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
     private static final Logger LOGGER_WARN = LoggerFactory.getLogger("warn");
+
+    private final InMemoryApartmentDao apartmentDao = new InMemoryApartmentDao();
 
     public void create(Apartment apartment) {
         if (isApartmentNumberCorrectAndUnique(apartment.getApartmentNumber()) && isNumberOfRoomsCorrect(apartment.getNumberOfRooms()) && isApartmentCostCorrect(apartment.getApartmentCost())) {

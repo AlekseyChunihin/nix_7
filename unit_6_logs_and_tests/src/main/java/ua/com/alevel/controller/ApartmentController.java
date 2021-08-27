@@ -19,7 +19,7 @@ public class ApartmentController {
             System.out.println("You have entered incorrect value, try again");
         }
         int apartmentNumber = scanNumber.nextInt();
-        System.out.println("enter apartment cost(must be bigger than 100)");
+        System.out.println("enter apartment room cost(must be bigger than 100)");
         while (!scanBigDecimalValue.hasNextInt()) {
             scanBigDecimalValue.next();
             System.out.println("You have entered incorrect value, try again");
@@ -50,7 +50,7 @@ public class ApartmentController {
                 System.out.println("You have entered incorrect value, try again");
             }
             int apartmentNumber = scanNumber.nextInt();
-            System.out.println("enter apartment cost(must be bigger than 100)");
+            System.out.println("enter apartment room cost(must be bigger than 100)");
             while (!scanBigDecimalValue.hasNextInt()) {
                 scanBigDecimalValue.next();
                 System.out.println("You have entered incorrect value, try again");
@@ -73,7 +73,6 @@ public class ApartmentController {
             System.out.println("apartment with this id does not exist");
         } else {
             apartmentService.delete(id);
-            System.out.println("apartment has been deleted successfully");
         }
     }
 

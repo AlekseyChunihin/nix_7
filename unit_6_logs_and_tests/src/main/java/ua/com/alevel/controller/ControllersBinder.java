@@ -21,7 +21,7 @@ public class ControllersBinder {
             System.out.println("\t2 - UPDATE tenant");
             System.out.println("\t3 - DELETE tenant everywhere(in apartment and storage)");
             System.out.println("\t4 - DELETE tenant from apartment");
-            System.out.println("\t5 - Add tenant to apartment");
+            System.out.println("\t5 - ADD tenant to apartment");
             System.out.println("\t6 - FIND tenant by id");
             System.out.println("\t7 - FIND all tenants");
             System.out.println("\t8 - CREATE apartment");

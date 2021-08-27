@@ -75,10 +75,10 @@ public class Apartment {
         return "Apartment{" +
                 "id='" + id + '\'' +
                 ", apartmentNumber='" + apartmentNumber + '\'' +
-                ", apartmentCost=" + apartmentCost +
+                ", apartment room cost=" + apartmentCost +
                 ", numberOfRooms=" + numberOfRooms +
-                ", amount of apartment tenants=" + apartmentTenants.amountOfTenants() +
-                ", amount of free space in apartment=" + apartmentTenants.amountOfFreeSpaceInApartment() +
+                ", amount of occupied rooms(with tenants)=" + apartmentTenants.amountOfTenants() +
+                ", amount of free rooms in apartment=" + apartmentTenants.amountOfFreeSpaceInApartment() +
                 '}';
     }
 }
