@@ -22,12 +22,12 @@
         <junit.version>4.13.1</junit.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
-        <maven.shade.plugin.version>3.2.0</maven.shade.plugin.version>
         <logs.folder>logs</logs.folder>
         <logs.test.folder>test_logs</logs.test.folder>
         <logs.life.folder>life_logs</logs.life.folder>
     </properties>
 
+    <!--Profiles-->
     <profiles>
         <profile>
             <id>test</id>
@@ -73,11 +73,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!--SLF4J-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+
+        <!--LOGBACK-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
