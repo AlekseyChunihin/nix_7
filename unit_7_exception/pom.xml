@@ -45,7 +45,7 @@
     </dependencies>
 
     <build>
-        <finalName>unit_6_logs_and_tests</finalName>
+        <finalName>unit_7_exception</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
