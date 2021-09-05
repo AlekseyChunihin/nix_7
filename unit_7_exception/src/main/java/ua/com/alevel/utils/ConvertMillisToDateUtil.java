@@ -5,16 +5,6 @@ import ua.com.alevel.entity.Date;
 
 public class ConvertMillisToDateUtil {
 
-
-    private static final double MILLISECOND = 1;
-    private static final double SECOND = MILLISECOND / 1000;
-    private static final double MINUTE = SECOND / 60;
-    private static final double HOUR = MINUTE / 60;
-    private static final double DAY = HOUR / 24;
-
-    private static final long YEAR = 31536000000L;
-    private static final long LEAP_YEAR = 31622400000L;
-
     public static double millisecondsToSeconds(long milliseconds) {
         return (milliseconds * DateConstants.SECOND);
     }
