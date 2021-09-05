@@ -3,7 +3,7 @@ package ua.com.alevel.entity;
 public class Date {
 
     private long year;
-    private long month;
+    private int month;
     private long day;
     private long hours;
     private long minutes;
@@ -11,13 +11,6 @@ public class Date {
     private long milliseconds;
 
     public Date() {
-        this.year = 0;
-        this.month = 1;
-        this.day = 1;
-        this.hours = 0;
-        this.minutes = 0;
-        this.seconds = 0;
-        this.milliseconds = 0;
     }
 
     public long getYear() {
@@ -28,11 +21,11 @@ public class Date {
         this.year = year;
     }
 
-    public long getMonth() {
+    public int getMonth() {
         return month;
     }
 
-    public void setMonth(long month) {
+    public void setMonth(int month) {
         this.month = month;
     }
 
@@ -74,5 +67,22 @@ public class Date {
 
     public void setMilliseconds(long milliseconds) {
         this.milliseconds = milliseconds;
+    }
+
+    private static final int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    public static boolean isLeapYear(long year) {
+        return (year % 400 == 0 || year % 4 == 0 && year % 100 != 0);
+    }
+
+    public static boolean isValidDate(long year, int month, long day) {
+        if ((month - 1) < 0 || (month - 1) >= 12) {
+            return false;
+        }
+        int maxDate = daysInMonth[(month - 1)];
+        if ((month - 1) == 1 && isLeapYear(year)) {
+            maxDate = 29;
+        }
+        return day >= 1 && day <= maxDate;
     }
 }

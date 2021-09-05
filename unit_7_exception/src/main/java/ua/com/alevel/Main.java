@@ -1,8 +1,12 @@
 package ua.com.alevel;
 
+import ua.com.alevel.controller.DateController;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        DateController dateController = new DateController();
+        dateController.start();
+
     }
 }

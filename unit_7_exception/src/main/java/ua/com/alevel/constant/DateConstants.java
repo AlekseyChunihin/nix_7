@@ -2,18 +2,24 @@ package ua.com.alevel.constant;
 
 public class DateConstants {
 
-    private static final long MILLISECONDS_IN_SECOND = 1_000L;
-    private static final long MILLISECONDS_IN_MINUTE = 60_000L;
-    private static final long MILLISECONDS_IN_HOUR = 3_600_000L;
-    private static final long MILLISECONDS_IN_DAY = 86_400_000L;
-    private static final long MILLISECONDS_IN_YEAR = 31_536_000_000L;
-    private static final long MILLISECONDS_IN_LEAP_YEAR = 31_622_400_000L;
+    public static final long MILLISECONDS_IN_SECOND = 1000;
+    public static final long MILLISECONDS_IN_MINUTE = 60000;
+    public static final long MILLISECONDS_IN_HOUR = 3600000;
+    public static final long MILLISECONDS_IN_DAY = 86400000;
+    public static final long MILLISECONDS_IN_YEAR = MILLISECONDS_IN_DAY * 365;
+    public static final long MILLISECONDS_IN_LEAP_YEAR = MILLISECONDS_IN_YEAR + MILLISECONDS_IN_DAY;
+    public static final int[] MONTH_DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static final String[] MONTHS_NAMES = {"January", "February", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"};
 
-    private static final long SECONDS_IN_HOUR = 3_600L;
+    public static final double MILLISECOND = 1;
+    public static final double SECOND = MILLISECOND / 1000;
+    public static final double MINUTE = SECOND / 60;
+    public static final double HOUR = MINUTE / 60;
+    public static final double DAY = HOUR / 24;
 
-    private static final long HOURS_IN_DAY = 24L;
+    public static final long YEAR = 31536000000L;
+    public static final long LEAP_YEAR = 31622400000L;
 
-    private static final long DAYS_IN_YEAR = 365L;
-    private static final long DAYS_IN_LEAP_YEAR = 366L;
 
 }
