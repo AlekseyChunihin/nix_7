@@ -71,7 +71,7 @@ public class DateController {
                     sortingDates();
                 }
                 break;
-                case "6": {
+                case "5": {
                     chooseInputOutputDateFormat();
                 }
                 break;
@@ -171,8 +171,8 @@ public class DateController {
         System.out.println("Select date format(default format = dd/mm/yy 00:00:00:000:");
         System.out.println("1 - dd/mm/yy 00:00:00:000");
         System.out.println("2 - m/d/yyyy 00:00:00:000");
-        System.out.println("3 - mmm-d-yy 00:00:00:000");
-        System.out.println("4 - dd-mmm-yyyy 00:00:00:000");
+        System.out.println("3 - mmm-d-yy 00:00:00:000 - March 4 21");
+        System.out.println("4 - dd-mmm-yyyy 00:00:00:000 - 09 April 789");
         String choice = scanChoiceFormat.nextLine();
         switch (choice) {
             case "1": {

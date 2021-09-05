@@ -7,6 +7,6 @@ public class DateException extends Exception {
 
     @Override
     public String toString() {
-        return "Date entered incorrect";
+        return "entered incorrect";
     }
 }
