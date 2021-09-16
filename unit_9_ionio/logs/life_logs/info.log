@@ -1,0 +1,4 @@
+15:38:42.765 [main] INFO  info - create new tenant: qw
+15:38:53.647 [main] INFO  info - create new tenant: sssa
+15:39:04.178 [main] INFO  info - create new apartment with number: 1
+15:39:45.707 [main] INFO  info - add tenant qw to apartment with number: 1
