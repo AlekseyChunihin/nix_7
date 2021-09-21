@@ -12,13 +12,20 @@
     <groupId>ua.com.alevel</groupId>
     <artifactId>module_2</artifactId>
 
+
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.shade.plugin.version>3.2.0</maven.shade.plugin.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
-
+        <org.jgrapht.version>1.5.1</org.jgrapht.version>
     </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>${org.jgrapht.version}</version>
+        </dependency>
+    </dependencies>
 </project>

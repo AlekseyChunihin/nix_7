@@ -1,4 +1,4 @@
-package ua.com.alevel.CheckConvertDate;
+package ua.com.alevel.check_convert_date;
 
 public class Pair {
 
@@ -14,16 +14,8 @@ public class Pair {
         return dateValue;
     }
 
-    public void setDateValue(String dateValue) {
-        this.dateValue = dateValue;
-    }
-
     public String getDateFormat() {
         return dateFormat;
-    }
-
-    public void setDateFormat(String dateFormat) {
-        this.dateFormat = dateFormat;
     }
 
     @Override

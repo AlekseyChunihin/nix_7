@@ -1,7 +1,6 @@
-package ua.com.alevel.CheckConvertDate;
+package ua.com.alevel.check_convert_date;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class DatesMenu {
@@ -10,7 +9,6 @@ public class DatesMenu {
         Scanner scanChoice = new Scanner(System.in);
         System.out.println("enter how many dates you want to enter?");
         int size = getSize();
-        //String[] dates = new String[size];
         ArrayList<Pair> dates = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             String dateFormat = chooseInputDateFormat();
@@ -31,10 +29,10 @@ public class DatesMenu {
     private String chooseInputDateFormat() {
         String dateFormat;
         Scanner scanChoiceFormat = new Scanner(System.in);
-        System.out.println("Select date format(default format = dd/mm/yy:");
-        System.out.println("1 - yyyy/mm/dd - 2020/04/05");
-        System.out.println("2 - dd/mm/yy - 05/04/2020");
-        System.out.println("3 - mm-dd-yy - 04-05-2020");
+        System.out.println("Select date format(default format = yyyy/mm/dd:)");
+        System.out.println("1 - yyyy/mm/dd (2020/04/05)");
+        System.out.println("2 - dd/mm/yy (05/04/2020)");
+        System.out.println("3 - mm-dd-yyyy (04-05-2020)");
         String choice = scanChoiceFormat.nextLine();
         switch (choice) {
             case "1": {
@@ -42,15 +40,15 @@ public class DatesMenu {
             }
             break;
             case "2": {
-                dateFormat = "dd/mm/yy";
+                dateFormat = "dd/mm/yyyy";
             }
             break;
             case "3": {
-                dateFormat = "mm-dd-yy";
+                dateFormat = "mm-dd-yyyy";
             }
             break;
             default:
-                dateFormat = "dd/mm/yy";
+                dateFormat = "yyyy/mm/dd";
                 break;
         }
         return dateFormat;

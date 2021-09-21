@@ -1,6 +1,6 @@
-package ua.com.alevel.CheckConvertDate;
+package ua.com.alevel.check_convert_date;
 
-import ua.com.alevel.CheckConvertDate.constant.DateFormatConstants;
+import ua.com.alevel.check_convert_date.constant.DateFormatConstants;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
