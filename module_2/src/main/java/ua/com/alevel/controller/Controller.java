@@ -72,6 +72,7 @@ public class Controller {
     private void printMenuText() {
         System.out.println("\t\t\t\t\t\tMenu");
         System.out.println("Please, choose what you want to do(press the corresponding number):");
+        System.out.println("Warning!Before starting the application using the bat file, change the input.txt and output.txt paths to absolute!");
         System.out.println("\t1 - Convert dates to numbers");
         System.out.println("\t2 - Find first unique name");
         System.out.println("\t3 - Find the shortest path(File with results will be created after the end of the program)");
