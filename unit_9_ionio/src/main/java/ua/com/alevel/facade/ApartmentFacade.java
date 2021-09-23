@@ -1,22 +1,24 @@
 package ua.com.alevel.facade;
 
 import ua.com.alevel.dto.ApartmentDto;
-import ua.com.alevel.service.impl.ApartmentServiceImpl;
+import ua.com.alevel.dto.TenantDto;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public interface ApartmentFacade {
 
-    public void create(int apartmentNumber, BigDecimal cost, int numberOfRooms);
+    void create(int apartmentNumber, BigDecimal cost, int numberOfRooms);
 
-    public ApartmentServiceImpl getApartmentService();
+    void update(ApartmentDto apartmentDto);
 
-    public void update(ApartmentDto apartmentDto);
+    void addTenantToApartment(ApartmentDto apartmentDto, TenantDto tenantDto);
 
-    public void deleteById(String id);
+    void deleteTenantFromApartment(ApartmentDto apartmentDto, TenantDto tenantDto);
 
-    public ApartmentDto findById(String id);
+    void deleteById(String id);
 
-    public List<ApartmentDto> findAllApartments();
+    ApartmentDto findById(String id);
+
+    List<ApartmentDto> findAllApartments();
 }

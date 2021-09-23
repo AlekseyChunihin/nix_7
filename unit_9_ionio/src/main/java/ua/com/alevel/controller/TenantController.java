@@ -1,13 +1,8 @@
 package ua.com.alevel.controller;
 
-import ua.com.alevel.dto.ApartmentDto;
 import ua.com.alevel.dto.TenantDto;
-import ua.com.alevel.facade.ApartmentFacade;
 import ua.com.alevel.facade.TenantFacade;
 import ua.com.alevel.facade.impl.TenantFacadeImpl;
-import ua.com.alevel.service.impl.ApartmentServiceImpl;
-import ua.com.alevel.service.impl.TenantServiceImpl;
-import ua.com.alevel.storage.ApartmentArray;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,8 +23,6 @@ public class TenantController {
         }
         BigDecimal amountOfMoney = scanValue.nextBigDecimal();
         tenantFacade.create(name, amountOfMoney);
-        /*Tenant tenant = new Tenant(name, amountOfMoney);
-        tenantServiceImpl.create(tenant);*/
     }
 
     public void update(String id) {
@@ -50,15 +43,11 @@ public class TenantController {
             tenantDto.setAmountOfMoney(amountOfMoney);
             tenantDto.setId(id);
             tenantFacade.update(tenantDto);
-            /*Tenant tenant = new Tenant(name, amountOfMoney);
-            tenant.setId(id);
-            tenantServiceImpl.update(tenant);*/
         }
     }
 
     public void findTenantById(String id) {
         TenantDto tenantDto = tenantFacade.findById(id);
-        //Tenant tenant = tenantServiceImpl.findTenantById(id);
         if (tenantDto == null) {
             System.out.println("tenant with this id does not exist");
         } else {
@@ -68,7 +57,6 @@ public class TenantController {
 
     public void findAllTenants() {
         List<TenantDto> tenants = tenantFacade.findAllTenants();
-        //TenantArray tenantArray = tenantServiceImpl.findAllTenants();
         if (tenants.size() > 0) {
             for (TenantDto tenant : tenants) {
                 System.out.println(tenant);

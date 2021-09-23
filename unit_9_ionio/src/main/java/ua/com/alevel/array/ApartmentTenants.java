@@ -1,19 +1,17 @@
 package ua.com.alevel.array;
 
-import ua.com.alevel.entity.Tenant;
-
 public class ApartmentTenants {
 
     int current;
-    Tenant[] tenants;
+    String[] tenantsId;
 
     public ApartmentTenants(int size) {
-        tenants = new Tenant[size + 1];
+        tenantsId = new String[size + 1];
         current = 0;
     }
 
-    public void add(Tenant tenant) {
-        tenants[current] = tenant;
+    public void add(String tenantId) {
+        tenantsId[current] = tenantId;
         current++;
     }
 
@@ -23,7 +21,7 @@ public class ApartmentTenants {
             System.out.println("This apartment is empty.");
         } else {
             for (i = 0; i < current; i++) {
-                if (tenants[i].getId().equals(tenantId)) {
+                if (tenantsId[i].equals(tenantId)) {
                     break;
                 }
             }
@@ -32,7 +30,7 @@ public class ApartmentTenants {
                 return;
             }
             for (int j = i; j < current; j++) {
-                tenants[i] = tenants[i + 1];
+                tenantsId[i] = tenantsId[i + 1];
             }
             current--;
         }
@@ -43,7 +41,7 @@ public class ApartmentTenants {
             return false;
         }
         for (int i = 0; i < current; i++) {
-            if (tenants[i].getId().equals(tenantId)) {
+            if (tenantsId[i].equals(tenantId)) {
                 return true;
             }
         }
@@ -55,6 +53,6 @@ public class ApartmentTenants {
     }
 
     public int amountOfFreeSpaceInApartment() {
-        return (tenants.length - 1) - amountOfTenants();
+        return (tenantsId.length - 1) - amountOfTenants();
     }
 }

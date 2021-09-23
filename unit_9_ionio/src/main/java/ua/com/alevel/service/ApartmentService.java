@@ -2,22 +2,23 @@ package ua.com.alevel.service;
 
 import ua.com.alevel.entity.Apartment;
 import ua.com.alevel.entity.Tenant;
-import ua.com.alevel.storage.ApartmentArray;
+
+import java.util.List;
 
 public interface ApartmentService {
 
-    public void create(Apartment apartment);
+    void create(Apartment apartment);
 
-    public void update(Apartment apartment);
+    void update(Apartment apartment);
 
-    public void delete(String id);
+    void delete(String id);
 
-    public void addTenantToApartment(Apartment apartment, Tenant tenant);
+    void addTenantToApartment(Apartment apartment, Tenant tenant);
 
-    public void deleteTenantFromApartment(Apartment apartment, Tenant tenant);
+    void deleteTenantFromApartment(Apartment apartment, Tenant tenant);
 
-    public ApartmentArray findAllApartments();
+    List<Apartment> findAllApartments();
 
-    public Apartment findApartmentById(String id);
+    Apartment findApartmentById(String id);
 
 }

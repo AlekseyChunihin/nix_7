@@ -1,24 +1,24 @@
 package ua.com.alevel.dao;
 
 import ua.com.alevel.entity.Apartment;
-import ua.com.alevel.entity.Tenant;
-import ua.com.alevel.storage.ApartmentArray;
+
+import java.util.List;
 
 public interface ApartmentDao {
 
-    public void create(Apartment apartment);
+    void create(Apartment apartment);
 
-    public void update(Apartment apartment);
+    void update(Apartment apartment);
 
-    public void addTenantToApartment(Apartment apartment, Tenant tenant);
+    void addTenantToApartment(Apartment apartment, String tenantId);
 
-    public void deleteTenantFromApartment(Apartment apartment, Tenant tenant);
+    void deleteTenantFromApartment(Apartment apartment, String tenantId);
 
-    public Apartment findApartmentById(String id);
+    Apartment findApartmentById(String id);
 
-    public String generateId();
+    String generateId();
 
-    public ApartmentArray findAllApartments();
+    List<Apartment> findAllApartments();
 
-    public void delete(String id);
+    void delete(String id);
 }

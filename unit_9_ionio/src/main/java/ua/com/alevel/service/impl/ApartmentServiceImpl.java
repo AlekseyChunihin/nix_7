@@ -3,12 +3,13 @@ package ua.com.alevel.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.com.alevel.dao.impl.ApartmentDaoImpl;
+import ua.com.alevel.dao.impl.TenantDaoImpl;
 import ua.com.alevel.entity.Apartment;
 import ua.com.alevel.entity.Tenant;
 import ua.com.alevel.service.ApartmentService;
-import ua.com.alevel.storage.ApartmentArray;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ApartmentServiceImpl implements ApartmentService {
 
@@ -16,6 +17,7 @@ public class ApartmentServiceImpl implements ApartmentService {
     private static final Logger LOGGER_WARN = LoggerFactory.getLogger("warn");
 
     private final ApartmentDaoImpl apartmentDao = new ApartmentDaoImpl();
+    private final TenantDaoImpl tenantDao = new TenantDaoImpl();
 
     public void create(Apartment apartment) {
         if (isApartmentNumberCorrectAndUnique(apartment.getApartmentNumber()) && isNumberOfRoomsCorrect(apartment.getNumberOfRooms()) && isApartmentCostCorrect(apartment.getApartmentCost())) {
@@ -43,20 +45,22 @@ public class ApartmentServiceImpl implements ApartmentService {
                 && doesTheApartmentHasFreeRoom(apartment)) {
             LOGGER_INFO.info("add tenant " + tenant.getName() + " to apartment with number: " + apartment.getApartmentNumber());
             tenant.setAmountOfMoney(tenant.getAmountOfMoney().subtract(apartment.getApartmentCost()));
+            apartmentDao.addTenantToApartment(apartment, tenant.getId());
             tenant.setApartment(apartment);
-            apartmentDao.addTenantToApartment(apartment, tenant);
+            tenantDao.updateApartment(tenant);
         }
     }
 
     public void deleteTenantFromApartment(Apartment apartment, Tenant tenant) {
         if (isApartmentConsistsTenants(apartment.getId()) && doesTheTenantLiveInTheApartment(apartment, tenant.getId())) {
             LOGGER_INFO.info("remove tenant " + tenant.getName() + " from apartment with number: " + apartment.getApartmentNumber());
-            apartmentDao.deleteTenantFromApartment(apartment, tenant);
+            apartmentDao.deleteTenantFromApartment(apartment, tenant.getId());
             tenant.setApartment(null);
+            tenantDao.updateApartment(tenant);
         }
     }
 
-    public ApartmentArray findAllApartments() {
+    public List<Apartment> findAllApartments() {
         return apartmentDao.findAllApartments();
     }
 
@@ -73,9 +77,9 @@ public class ApartmentServiceImpl implements ApartmentService {
     }
 
     private boolean isApartmentNumberCorrectAndUnique(int apartmentNumber) {
-        ApartmentArray apartmentArray = findAllApartments();
-        for (int i = 0; i < apartmentArray.size(); i++) {
-            if (apartmentArray.get(i).getApartmentNumber() == apartmentNumber) {
+        List<Apartment> apartments = findAllApartments();
+        for (int i = 0; i < apartments.size(); i++) {
+            if (apartments.get(i).getApartmentNumber() == apartmentNumber) {
                 return false;
             }
         }

@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import ua.com.alevel.dao.impl.TenantDaoImpl;
 import ua.com.alevel.entity.Tenant;
 import ua.com.alevel.service.TenantService;
-import ua.com.alevel.storage.TenantArray;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,7 +46,7 @@ public class TenantServiceImpl implements TenantService {
     }
 
     @Override
-    public TenantArray findAllTenants() {
+    public List<Tenant> findAllTenants() {
         return tenantDao.findAllTenants();
     }
 

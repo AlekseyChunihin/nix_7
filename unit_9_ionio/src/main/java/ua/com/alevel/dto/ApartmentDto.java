@@ -3,7 +3,6 @@ package ua.com.alevel.dto;
 
 import ua.com.alevel.array.ApartmentTenants;
 import ua.com.alevel.entity.Apartment;
-import ua.com.alevel.entity.Tenant;
 
 import java.math.BigDecimal;
 
@@ -36,14 +35,6 @@ public class ApartmentDto {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setTenantIntoApartment(Tenant tenant) {
-        apartmentTenants.add(tenant);
-    }
-
-    public void removeTenantFromApartment(Tenant tenant) {
-        apartmentTenants.delete(tenant.getId());
     }
 
     public int getAmountOfTenants() {
@@ -81,7 +72,7 @@ public class ApartmentDto {
                 ", apartmentNumber='" + apartmentNumber + '\'' +
                 ", apartment room cost=" + apartmentCost +
                 ", numberOfRooms=" + numberOfRooms +
-                ", amount of occupied rooms(with tenants)=" + apartmentTenants.amountOfTenants() +
+                ", \namount of occupied rooms(with tenants)=" + apartmentTenants.amountOfTenants() +
                 ", amount of free rooms in apartment=" + apartmentTenants.amountOfFreeSpaceInApartment() +
                 '}';
     }

@@ -1,11 +1,12 @@
 package ua.com.alevel.facade.impl;
 
 import ua.com.alevel.dto.ApartmentDto;
+import ua.com.alevel.dto.TenantDto;
 import ua.com.alevel.entity.Apartment;
+import ua.com.alevel.entity.Tenant;
 import ua.com.alevel.facade.ApartmentFacade;
 import ua.com.alevel.service.ApartmentService;
 import ua.com.alevel.service.impl.ApartmentServiceImpl;
-import ua.com.alevel.storage.ApartmentArray;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -21,10 +22,6 @@ public class ApartmentFacadeImpl implements ApartmentFacade {
         apartmentService.create(apartment);
     }
 
-    public ApartmentServiceImpl getApartmentService() {
-        return (ApartmentServiceImpl) apartmentService;
-    }
-
     @Override
     public void update(ApartmentDto apartmentDto) {
         Apartment apartment = apartmentService.findApartmentById(apartmentDto.getId());
@@ -32,6 +29,39 @@ public class ApartmentFacadeImpl implements ApartmentFacade {
         apartment.setApartmentCost(apartmentDto.getApartmentCost());
         apartment.setNumberOfRooms(apartmentDto.getNumberOfRooms());
         apartmentService.update(apartment);
+    }
+
+    public Apartment convertApartmentDtoToApartment(ApartmentDto apartmentDto) {
+        Apartment apartment = new Apartment();
+        apartment.setId(apartmentDto.getId());
+        apartment.setApartmentTenants(apartmentDto.getTenantArray());
+        apartment.setApartmentCost(apartmentDto.getApartmentCost());
+        apartment.setApartmentNumber(apartmentDto.getApartmentNumber());
+        apartment.setNumberOfRooms(apartmentDto.getNumberOfRooms());
+        return apartment;
+    }
+
+    public Tenant convertTenantDtoToTenant(TenantDto tenantDto) {
+        Tenant tenant = new Tenant();
+        tenant.setId(tenantDto.getId());
+        tenant.setApartment(tenantDto.getApartment());
+        tenant.setName(tenantDto.getName());
+        tenant.setAmountOfMoney(tenantDto.getAmountOfMoney());
+        return tenant;
+    }
+
+    @Override
+    public void addTenantToApartment(ApartmentDto apartmentDto, TenantDto tenantDto) {
+        Apartment apartment = convertApartmentDtoToApartment(apartmentDto);
+        Tenant tenant = convertTenantDtoToTenant(tenantDto);
+        apartmentService.addTenantToApartment(apartment, tenant);
+    }
+
+    @Override
+    public void deleteTenantFromApartment(ApartmentDto apartmentDto, TenantDto tenantDto) {
+        Apartment apartment = convertApartmentDtoToApartment(apartmentDto);
+        Tenant tenant = convertTenantDtoToTenant(tenantDto);
+        apartmentService.deleteTenantFromApartment(apartment, tenant);
     }
 
     @Override
@@ -42,7 +72,7 @@ public class ApartmentFacadeImpl implements ApartmentFacade {
     @Override
     public ApartmentDto findById(String id) {
         Apartment apartment = apartmentService.findApartmentById(id);
-        if(apartment != null) {
+        if (apartment != null) {
             return new ApartmentDto(apartment);
         }
         return null;
@@ -51,7 +81,7 @@ public class ApartmentFacadeImpl implements ApartmentFacade {
     @Override
     public List<ApartmentDto> findAllApartments() {
         List<ApartmentDto> apartmentDtos = new ArrayList<>();
-        ApartmentArray apartments  = apartmentService.findAllApartments();
+        List<Apartment> apartments = apartmentService.findAllApartments();
         for (int i = 0; i < apartments.size(); i++) {
             apartmentDtos.add((new ApartmentDto(apartments.get(i))));
         }

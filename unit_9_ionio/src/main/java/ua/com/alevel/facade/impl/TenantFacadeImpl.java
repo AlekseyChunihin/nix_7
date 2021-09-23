@@ -1,15 +1,10 @@
 package ua.com.alevel.facade.impl;
 
-import ua.com.alevel.controller.ApartmentController;
-import ua.com.alevel.dto.ApartmentDto;
 import ua.com.alevel.dto.TenantDto;
-import ua.com.alevel.entity.Apartment;
 import ua.com.alevel.entity.Tenant;
 import ua.com.alevel.facade.TenantFacade;
-import ua.com.alevel.service.impl.ApartmentServiceImpl;
 import ua.com.alevel.service.TenantService;
 import ua.com.alevel.service.impl.TenantServiceImpl;
-import ua.com.alevel.storage.TenantArray;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -25,16 +20,6 @@ public class TenantFacadeImpl implements TenantFacade {
         tenantService.create(tenant);
     }
 
-    public Apartment convertApartmentDtoToApartment(ApartmentDto apartmentDto) {
-        Apartment apartment = new Apartment();
-        apartment.setId(apartmentDto.getId());
-        apartment.setApartmentNumber(apartmentDto.getApartmentNumber());
-        apartment.setApartmentCost(apartmentDto.getApartmentCost());
-        apartment.setNumberOfRooms(apartmentDto.getNumberOfRooms());
-        apartment.setApartmentTenants(apartmentDto.getTenantArray());
-        return apartment;
-    }
-
     @Override
     public void update(TenantDto tenantDto) {
         Tenant tenant = tenantService.findTenantById(tenantDto.getId());
@@ -44,16 +29,8 @@ public class TenantFacadeImpl implements TenantFacade {
     }
 
     @Override
-    public void deleteTenantEverywhere(String id, ApartmentServiceImpl apartmentServiceImpl) {
-        if (findById(id).getApartment() != null) {
-            deleteTenantFromApartment(id, apartmentServiceImpl);
-        }
+    public void delete(String id) {
         tenantService.delete(id);
-    }
-
-    @Override
-    public void deleteTenantFromApartment(String id, ApartmentServiceImpl apartmentServiceImpl) {
-        apartmentServiceImpl.deleteTenantFromApartment(tenantService.findTenantById(id).getApartment(), tenantService.findTenantById(id));
     }
 
     @Override
@@ -70,19 +47,11 @@ public class TenantFacadeImpl implements TenantFacade {
     @Override
     public List<TenantDto> findAllTenants() {
         List<TenantDto> tenantDtos = new ArrayList<>();
-        TenantArray tenants = tenantService.findAllTenants();
-        for (int i = 0; i < tenants.size(); i++) {
-            tenantDtos.add((new TenantDto(tenants.get(i))));
+        List<Tenant> tenants = tenantService.findAllTenants();
+        for (Tenant tenant : tenants) {
+            tenantDtos.add((new TenantDto(tenant)));
         }
         return tenantDtos;
-    }
-
-    @Override
-    public void addTenantToApartment(ApartmentDto apartmentDto, TenantDto tenantDto, ApartmentServiceImpl apartmentServiceImpl) {
-        Tenant tenant = tenantService.findTenantById(tenantDto.getId());
-        Apartment apartment = apartmentServiceImpl.findApartmentById(apartmentDto.getId());
-        apartmentServiceImpl.addTenantToApartment(apartment, tenant);
-
     }
 }
 

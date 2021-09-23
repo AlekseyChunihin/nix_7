@@ -3,7 +3,6 @@ package ua.com.alevel.controller;
 import ua.com.alevel.dto.ApartmentDto;
 import ua.com.alevel.facade.ApartmentFacade;
 import ua.com.alevel.facade.impl.ApartmentFacadeImpl;
-import ua.com.alevel.service.impl.ApartmentServiceImpl;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -35,8 +34,6 @@ public class ApartmentController {
         }
         int numberOfRooms = scanNumber.nextInt();
         apartmentFacade.create(apartmentNumber, cost, numberOfRooms);
-        /*Apartment apartment = new Apartment(apartmentNumber, cost, numberOfRooms);
-        apartmentServiceImpl.create(apartment);*/
     }
 
     public void update(String id) {
@@ -72,9 +69,6 @@ public class ApartmentController {
                 apartmentDto.setNumberOfRooms(numberOfRooms);
                 apartmentDto.setId(id);
                 apartmentFacade.update(apartmentDto);
-            /*Apartment apartment = new Apartment(apartmentNumber, cost, numberOfRooms);
-            apartment.setId(id);
-            apartmentServiceImpl.update(apartment);*/
             }
         }
     }
@@ -89,7 +83,6 @@ public class ApartmentController {
 
     public void findApartmentById(String id) {
         ApartmentDto apartmentDto = apartmentFacade.findById(id);
-        //Apartment apartment = apartmentServiceImpl.findApartmentById(id);
         if (apartmentDto == null) {
             System.out.println("apartment with this id does not exist");
         } else {
@@ -99,7 +92,6 @@ public class ApartmentController {
 
     public void findAllApartments() {
         List<ApartmentDto> apartments = apartmentFacade.findAllApartments();
-        //ApartmentArray apartments = apartmentServiceImpl.findAllApartments();
         if (apartments.size() > 0) {
             for (ApartmentDto apartment : apartments) {
                 System.out.println(apartment);

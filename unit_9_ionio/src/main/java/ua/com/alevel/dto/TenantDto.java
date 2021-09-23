@@ -54,13 +54,20 @@ public class TenantDto {
         this.apartment = apartment;
     }
 
+    public String printApartmentForTenant(Apartment apartment) {
+        if (apartment != null) {
+            return String.valueOf(apartment.getApartmentNumber());
+        } else return "tenant does not live in apartment";
+    }
+
     @Override
     public String toString() {
+        String apartmentNumber = printApartmentForTenant(apartment);
         return "Tenant{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", amountOfMoney=" + amountOfMoney +
-                ", \napartment=" + apartment +
+                ", apartment number = " + apartmentNumber +
                 '}';
     }
 }

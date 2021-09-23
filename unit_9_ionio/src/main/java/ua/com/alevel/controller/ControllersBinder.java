@@ -2,9 +2,6 @@ package ua.com.alevel.controller;
 
 import ua.com.alevel.dto.ApartmentDto;
 import ua.com.alevel.dto.TenantDto;
-import ua.com.alevel.facade.ApartmentFacade;
-import ua.com.alevel.service.impl.ApartmentServiceImpl;
-import ua.com.alevel.storage.ApartmentArray;
 
 import java.util.List;
 import java.util.Scanner;
@@ -119,7 +116,6 @@ public class ControllersBinder {
         } else {
             if (tenantController.tenantFacade.findById(id).getApartment() == null) {
                 List<ApartmentDto> apartmentDtos = apartmentController.apartmentFacade.findAllApartments();
-                //ApartmentArray apartments = apartmentServiceImpl.findAllApartments();
                 if (apartmentDtos.size() == 0) {
                     System.out.println("You need to create an apartment before adding tenants to it");
                     return;
@@ -138,7 +134,7 @@ public class ControllersBinder {
                             break;
                         }
                         TenantDto tenantDto = tenantController.tenantFacade.findById(id);
-                        tenantController.tenantFacade.addTenantToApartment(apartmentDtos.get(i), tenantDto, apartmentController.apartmentFacade.getApartmentService());
+                        apartmentController.apartmentFacade.addTenantToApartment(apartmentDtos.get(i), tenantDto);
                         break;
                     }
                 }
@@ -155,10 +151,13 @@ public class ControllersBinder {
         if (tenantController.tenantFacade.findById(id) == null) {
             System.out.println("tenant with this id does not exist");
         } else {
-
-            tenantController.tenantFacade.deleteTenantEverywhere(id, apartmentController.apartmentFacade.getApartmentService());
-            /*deleteTenantFromApartment(id, apartmentServiceImpl);
-            tenantServiceImpl.delete(id);*/
+            TenantDto tenantDto = tenantController.tenantFacade.findById(id);
+            if (tenantController.tenantFacade.findById(id).getApartment() != null) {
+                ApartmentDto apartmentDto = apartmentController.apartmentFacade.findById(tenantDto.getApartment().getId());
+                apartmentController.apartmentFacade.deleteTenantFromApartment(apartmentDto, tenantDto);
+                System.out.println("tenant has been deleted from apartment successfully");
+            }
+            tenantController.tenantFacade.delete(tenantDto.getId());
             System.out.println("tenant has been deleted from storage successfully");
         }
     }
@@ -168,8 +167,9 @@ public class ControllersBinder {
             System.out.println("tenant with this id does not exist");
         } else {
             if (tenantController.tenantFacade.findById(id).getApartment() != null) {
-                tenantController.tenantFacade.deleteTenantFromApartment(id, apartmentController.apartmentFacade.getApartmentService());
-                //apartmentServiceImpl.deleteTenantFromApartment(tenantServiceImpl.findTenantById(id).getApartment(), tenantServiceImpl.findTenantById(id));
+                TenantDto tenantDto = tenantController.tenantFacade.findById(id);
+                ApartmentDto apartmentDto = apartmentController.apartmentFacade.findById(tenantDto.getApartment().getId());
+                apartmentController.apartmentFacade.deleteTenantFromApartment(apartmentDto, tenantDto);
                 System.out.println("tenant has been deleted from apartment successfully");
             }
         }

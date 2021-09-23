@@ -38,12 +38,12 @@ public class Apartment {
         this.id = id;
     }
 
-    public void setTenantIntoApartment(Tenant tenant) {
-        apartmentTenants.add(tenant);
+    public void setTenantIntoApartment(String tenantId) {
+        apartmentTenants.add(tenantId);
     }
 
-    public void removeTenantFromApartment(Tenant tenant) {
-        apartmentTenants.delete(tenant.getId());
+    public void removeTenantFromApartment(String tenantId) {
+        apartmentTenants.delete(tenantId);
     }
 
     public int getAmountOfTenants() {
