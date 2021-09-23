@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class FindTheShortestPathUtil {
 
-    private static final String INPUT_TXT = "module_2\\files\\input.txt";
-    private static final String OUTPUT_TXT = "module_2\\files\\output.txt";
+    private static final String INPUT_TXT = "src/main/resources/input.txt";
+    private static final String OUTPUT_TXT = "src/main/resources/output.txt";
     private static final String ONLY_DIGITS_REGEX = "\\d+";
     private static final String ONLY_LETTERS_REGEX = "[a-zA-Z]+";
 
