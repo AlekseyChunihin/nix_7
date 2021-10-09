@@ -5,7 +5,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.com.alevel.SqlConnector;
+import ua.com.alevel.sqlConnector.SqlConnector;
 import ua.com.alevel.dao.LocationDao;
 import ua.com.alevel.dao.ProblemDao;
 import ua.com.alevel.dao.RouteDao;

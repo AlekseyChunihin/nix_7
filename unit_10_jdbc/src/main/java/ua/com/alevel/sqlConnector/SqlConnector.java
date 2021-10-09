@@ -1,4 +1,4 @@
-package ua.com.alevel;
+package ua.com.alevel.sqlConnector;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
