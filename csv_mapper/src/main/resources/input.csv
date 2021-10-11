@@ -1,0 +1,4 @@
+id,firstName,middleName,lastName,birthDate,gender,active,engagementScore
+1,John,Richard,Doe,2017-01-13,MALE,true,0.46
+2,Ivan,Ivanov,Ivanovich,2003-01-13,MALE,false,0.90
+2,Anastasia,Ivanova,Ivanovna,1999-01-13,FEMALE,TRUE,0.50
