@@ -9,10 +9,11 @@ import ua.com.alevel.dao.OperationDao;
 import ua.com.alevel.entity.Operation;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class OperationDaoImpl implements OperationDao {
 
@@ -41,61 +42,52 @@ public class OperationDaoImpl implements OperationDao {
     }
 
     @Override
-    public ResultSet findOperations(String login, String password, int period, String timeInterval) {
-        connection = JdbcConnector.getConnection(login, password);
+    public ArrayList<String[]> findOperations(String login, String password, int period, String timeInterval) {
+        ArrayList<String[]> operations = new ArrayList<>();
+        String[] header = "id,time,sum,category_id,account_id".split(",");
+        operations.add(header);
+        String getAccountStatementForPeriodSqlQuery = "";
         switch (timeInterval) {
             case "1": {
-                String sqlQueryInMinutes = "SELECT * FROM  operations WHERE  time >= DATEADD(MINUTE,-" + period + ", getdate()) and  time <= getdate()";
-                try {
-                    Statement statement = connection.createStatement();
-                    ResultSet result = statement.executeQuery(sqlQueryInMinutes);
-                    return result;
-                } catch (SQLException e) {
-                    log.error("could not find operations {} ", e.getMessage());
-                }
+                getAccountStatementForPeriodSqlQuery = "SELECT * FROM  operations WHERE  time >= DATEADD(MINUTE,-?, getdate()) and  time <= getdate()";
             }
             break;
             case "2": {
-                String sqlQueryInHours = "SELECT * FROM  operations WHERE  time >= DATEADD(HOUR,-" + period + ", getdate()) and  time <= getdate()";
-                try {
-                    Statement statement = connection.createStatement();
-                    ResultSet result = statement.executeQuery(sqlQueryInHours);
-                    return result;
-                } catch (SQLException e) {
-                    log.error("could not find operations {} ", e.getMessage());
-                }
+                getAccountStatementForPeriodSqlQuery = "SELECT * FROM  operations WHERE  time >= DATEADD(HOUR,-?, getdate()) and  time <= getdate()";
             }
             break;
             case "3": {
-                String sqlQueryInDays = "SELECT * FROM  operations WHERE  time >= DATEADD(DAY,-" + period + ", getdate()) and  time <= getdate()";
-                try {
-                    Statement statement = connection.createStatement();
-                    ResultSet result = statement.executeQuery(sqlQueryInDays);
-                    return result;
-                } catch (SQLException e) {
-                    log.error("could not find operations {} ", e.getMessage());
-                }
+                getAccountStatementForPeriodSqlQuery = "SELECT * FROM  operations WHERE  time >= DATEADD(DAY,-?, getdate()) and  time <= getdate()";
             }
             break;
             case "4": {
-                String sqlQueryInMonths = "SELECT * FROM  operations WHERE  time >= DATEADD(MONTH,-" + period + ", getdate()) and  time <= getdate()";
-                try {
-                    Statement statement = connection.createStatement();
-                    ResultSet result = statement.executeQuery(sqlQueryInMonths);
-                    return result;
-                } catch (SQLException e) {
-                    log.error("could not find operations {} ", e.getMessage());
-                }
+                getAccountStatementForPeriodSqlQuery = "SELECT * FROM  operations WHERE  time >= DATEADD(MONTH,-?, getdate()) and  time <= getdate()";
             }
             break;
             default:
                 System.out.println("Incorrect input");
         }
-        try {
-            connection.close();
+        connection = JdbcConnector.getConnection(login, password);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(getAccountStatementForPeriodSqlQuery)) {
+            preparedStatement.setInt(1, period);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String accountStatementEntry = resultSet.getLong("id") +
+                        "," +
+                        resultSet.getTimestamp("time") +
+                        "," +
+                        resultSet.getInt("sum") +
+                        "," +
+                        resultSet.getInt("category_id") +
+                        "," +
+                        resultSet.getInt("account_id");
+                String[] arr = accountStatementEntry.split(",");
+                operations.add(arr);
+            }
+            resultSet.close();
         } catch (SQLException e) {
-            log.info("failed to close {}", e.getMessage());
+            log.error("could not find operations {} ", e.getMessage());
         }
-        return null;
+        return operations;
     }
 }
