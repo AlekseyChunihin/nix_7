@@ -148,8 +148,6 @@ public class ManagementController {
             System.out.println("You have entered incorrect value, try again");
         }
         int sum = scanIntValues.nextInt();
-        //String categoryName = scanStringValues.nextLine();
-        //Integer balance = scanIntValues.nextInt();
         List<Category> categories = categoryService.findAllCategories(login, password);
         System.out.println("Choose operation category from the list");
         for (Category category : categories) {
