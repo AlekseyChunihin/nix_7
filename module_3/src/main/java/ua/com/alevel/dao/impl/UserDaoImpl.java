@@ -11,7 +11,7 @@ public class UserDaoImpl implements UserDao {
 
     private static final Logger log = LoggerFactory.getLogger(UserDao.class);
 
-    Session session = null;
+    private Session session = null;
 
     @Override
     public boolean existById(String login, String password, Integer id) {
@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
         User user = null;
         try {
             session = HibernateConnector.getSession(login, password);
-            user = session.createQuery("FROM User u WHERE telephoneNumber = :telephoneNumber" , User.class).setParameter("telephoneNumber", telephoneNumber).getSingleResult();
+            user = session.createQuery("FROM User u WHERE telephoneNumber = :telephoneNumber", User.class).setParameter("telephoneNumber", telephoneNumber).getSingleResult();
             log.info("users have been found successfully");
         } catch (Exception e) {
             log.error("Failed to find user: {} ", e.getMessage());

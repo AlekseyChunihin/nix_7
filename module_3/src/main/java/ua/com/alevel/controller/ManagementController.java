@@ -22,12 +22,12 @@ public class ManagementController {
 
     private static final Logger log = LoggerFactory.getLogger(ManagementController.class);
 
-    UserService userService = new UserServiceImpl();
-    AccountService accountService = new AccountServiceImpl();
-    OperationService operationService = new OperationServiceImpl();
-    CategoryService categoryService = new CategoryServiceImpl();
-    Scanner scanIntValues = new Scanner(System.in);
-    Scanner scanStringValues = new Scanner(System.in);
+    private final UserService userService = new UserServiceImpl();
+    private final AccountService accountService = new AccountServiceImpl();
+    private final OperationService operationService = new OperationServiceImpl();
+    private final CategoryService categoryService = new CategoryServiceImpl();
+    private final Scanner scanIntValues = new Scanner(System.in);
+    private final Scanner scanStringValues = new Scanner(System.in);
 
     public void modeSelectionMenu(String[] dataForConnection) {
         int id = Integer.parseInt(dataForConnection[0]);

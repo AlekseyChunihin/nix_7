@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
 
-    CategoryDao categoryDao = new CategoryDaoImpl();
+    private final CategoryDao categoryDao = new CategoryDaoImpl();
 
     @Override
     public List<Category> findAllCategories(String login, String password) {

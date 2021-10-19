@@ -14,7 +14,7 @@ public class CategoryDaoImpl implements CategoryDao {
 
     private static final Logger log = LoggerFactory.getLogger(CategoryDaoImpl.class);
 
-    Session session = null;
+    private Session session = null;
 
     @Override
     public List<Category> findAllCategories(String login, String password) {

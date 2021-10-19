@@ -25,11 +25,11 @@ public class PathFinderService {
 
     private static final Logger log = LoggerFactory.getLogger(PathFinderService.class);
 
-    Connection connection = SqlConnector.getConnection();
-    LocationDao locationDao = new LocationDao(connection);
-    ProblemDao problemDao = new ProblemDao(connection);
-    RouteDao routeDao = new RouteDao(connection);
-    SolutionDao solutionDao = new SolutionDao(connection);
+    private final Connection connection = SqlConnector.getConnection();
+    private final LocationDao locationDao = new LocationDao(connection);
+    private final ProblemDao problemDao = new ProblemDao(connection);
+    private final RouteDao routeDao = new RouteDao(connection);
+    private final SolutionDao solutionDao = new SolutionDao(connection);
 
     public void findTheShortestPath() {
         ArrayList<String> searchRoutes = getSearchingRoutes();

@@ -11,7 +11,7 @@ public class UserServiceImpl implements UserService {
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
-    UserDao userDao = new UserDaoImpl();
+    private final UserDao userDao = new UserDaoImpl();
 
     @Override
     public boolean existById(String login, String password, Integer id) throws NoSuchUserException {

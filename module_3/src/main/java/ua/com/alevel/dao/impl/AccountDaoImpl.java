@@ -14,7 +14,7 @@ public class AccountDaoImpl implements AccountDao {
 
     private static final Logger log = LoggerFactory.getLogger(AccountDaoImpl.class);
 
-    Session session = null;
+    private Session session = null;
 
     @Override
     public void changeAccountBalance(String login, String password, Account account) {

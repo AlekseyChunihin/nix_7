@@ -19,8 +19,7 @@ public class OperationDaoImpl implements OperationDao {
 
     private static final Logger log = LoggerFactory.getLogger(OperationDaoImpl.class);
 
-    Session session = null;
-    Connection connection = null;
+    private Session session = null;
 
     @Override
     public void addOperation(Operation operation, String login, String password) {
@@ -67,7 +66,7 @@ public class OperationDaoImpl implements OperationDao {
             default:
                 System.out.println("Incorrect input");
         }
-        connection = JdbcConnector.getConnection(login, password);
+        Connection connection = JdbcConnector.getConnection(login, password);
         try (PreparedStatement preparedStatement = connection.prepareStatement(getAccountStatementForPeriodSqlQuery)) {
             preparedStatement.setInt(1, period);
             ResultSet resultSet = preparedStatement.executeQuery();

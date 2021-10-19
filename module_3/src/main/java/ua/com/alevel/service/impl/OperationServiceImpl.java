@@ -17,8 +17,8 @@ public class OperationServiceImpl implements OperationService {
 
     private static final Logger log = LoggerFactory.getLogger(OperationService.class);
 
-    OperationDao operationDao = new OperationDaoImpl();
-    AccountDao accountDao = new AccountDaoImpl();
+    private final OperationDao operationDao = new OperationDaoImpl();
+    private final AccountDao accountDao = new AccountDaoImpl();
 
     @Override
     public void addOperation(Operation operation, String login, String password) {

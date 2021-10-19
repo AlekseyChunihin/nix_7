@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AccountServiceImpl implements AccountService {
 
-    AccountDao accountDao = new AccountDaoImpl();
+    private final AccountDao accountDao = new AccountDaoImpl();
 
     @Override
     public List<Account> findAllAccountsForUser(int id, String login, String password) {
