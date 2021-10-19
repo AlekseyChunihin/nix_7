@@ -20,12 +20,11 @@ public class CategoryDaoImpl implements CategoryDao {
     public List<Category> findAllCategories(String login, String password) {
         List<Category> categories = new ArrayList<>();
         try {
-            session = HibernateConnector.getSessionFactory(login, password).openSession();
+            session = HibernateConnector.getSession(login, password);
             categories = session.createQuery("SELECT c FROM Category c", Category.class).getResultList();
             log.info("categories have been found successfully");
 
         } catch (Exception e) {
-            session.getTransaction().rollback();
             log.error("Failed to find all categories: {} ", e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {

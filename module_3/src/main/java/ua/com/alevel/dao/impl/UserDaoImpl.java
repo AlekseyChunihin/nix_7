@@ -17,11 +17,10 @@ public class UserDaoImpl implements UserDao {
     public boolean existById(String login, String password, Integer id) {
         User user = null;
         try {
-            session = HibernateConnector.getSessionFactory(login, password).openSession();
+            session = HibernateConnector.getSession(login, password);
             user = session.createQuery("SELECT u FROM User u WHERE id =" + id, User.class).getSingleResult();
             log.info("user have been found successfully");
         } catch (Exception e) {
-            session.getTransaction().rollback();
             log.error("Failed to find user: {} ", e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
@@ -35,7 +34,7 @@ public class UserDaoImpl implements UserDao {
     public boolean existByTelephoneNumber(String login, String password, String telephoneNumber) {
         User user = null;
         try {
-            session = HibernateConnector.getSessionFactory(login, password).openSession();
+            session = HibernateConnector.getSession(login, password);
             user = session.createQuery("FROM User u WHERE telephoneNumber = :telephoneNumber" , User.class).setParameter("telephoneNumber", telephoneNumber).getSingleResult();
             log.info("users have been found successfully");
         } catch (Exception e) {

@@ -25,7 +25,7 @@ public class OperationDaoImpl implements OperationDao {
     @Override
     public void addOperation(Operation operation, String login, String password) {
         try {
-            session = HibernateConnector.getSessionFactory(login, password).openSession();
+            session = HibernateConnector.getSession(login, password);
             session.beginTransaction();
             Instant instant = Instant.now();
             operation.setTime(instant);

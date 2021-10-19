@@ -19,7 +19,7 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public void changeAccountBalance(String login, String password, Account account) {
         try {
-            session = HibernateConnector.getSessionFactory(login, password).openSession();
+            session = HibernateConnector.getSession(login, password);
             session.beginTransaction();
             session.merge(account);
             session.getTransaction().commit();
@@ -38,11 +38,10 @@ public class AccountDaoImpl implements AccountDao {
     public List<Account> findAllAccountsForUser(int id, String login, String password) {
         List<Account> accounts = new ArrayList<>();
         try {
-            session = HibernateConnector.getSessionFactory(login, password).openSession();
+            session = HibernateConnector.getSession(login, password);
             accounts = session.createQuery("SELECT a FROM Account a where user_id = " + id, Account.class).getResultList();
             log.info("accounts have been found successfully");
         } catch (Exception e) {
-            session.getTransaction().rollback();
             log.error("Failed to find all accounts for user: {} ", e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
