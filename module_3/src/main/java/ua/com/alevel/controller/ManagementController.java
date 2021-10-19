@@ -147,7 +147,9 @@ public class ManagementController {
             scanIntValues.next();
             System.out.println("You have entered incorrect value, try again");
         }
-        int amount = scanIntValues.nextInt();
+        int sum = scanIntValues.nextInt();
+        //String categoryName = scanStringValues.nextLine();
+        //Integer balance = scanIntValues.nextInt();
         List<Category> categories = categoryService.findAllCategories(login, password);
         System.out.println("Choose operation category from the list");
         for (Category category : categories) {
@@ -192,7 +194,7 @@ public class ManagementController {
                 System.out.println("There is no such balance.Try Again");
             }
         }
-        Operation operation = new Operation(amount, category, account);
+        Operation operation = new Operation(sum, category, account);
         operationService.addOperation(operation, login, password);
     }
 
