@@ -35,6 +35,8 @@ public class ProblemDao {
                 log.info("found problems. Problem: id: {}, from_id: {}, to_id: {} ", id, from_id, to_id);
                 problems.add(problem);
             }
+            resultSet.close();
+            statement.close();
         } catch (SQLException e) {
             log.info("could not find problems {} ", e.getMessage());
         }

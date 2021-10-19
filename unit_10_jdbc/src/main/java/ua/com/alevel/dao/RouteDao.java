@@ -36,6 +36,8 @@ public class RouteDao {
                 log.info("found routes. Route: id: {}, from_id: {}, to_id: {}, cost: {} ", id, from_id, to_id, cost);
                 routes.add(route);
             }
+            resultSet.close();
+            statement.close();
         } catch (SQLException e) {
             log.info("could not find routes {} ", e.getMessage());
         }

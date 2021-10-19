@@ -34,6 +34,8 @@ public class LocationDao {
                 log.info("found locations. Location: id: {}, name: {} ", id, name);
                 cities.add(location);
             }
+            result.close();
+            statement.close();
         } catch (SQLException e) {
             log.info("could not find locations {} ", e.getMessage());
         }
