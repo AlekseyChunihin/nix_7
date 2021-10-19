@@ -88,6 +88,11 @@ public class OperationDaoImpl implements OperationDao {
         } catch (SQLException e) {
             log.error("could not find operations {} ", e.getMessage());
         }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            log.error("could not close connection {} ", e.getMessage());
+        }
         return operations;
     }
 }
