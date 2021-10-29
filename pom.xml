@@ -23,6 +23,7 @@
         <module>csv_mapper</module>
         <module>module_3</module>
         <module>unit_13_jpa_hibernate</module>
+        <module>unit_11_reflection</module>
     </modules>
 
     <properties>
