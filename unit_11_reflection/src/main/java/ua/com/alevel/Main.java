@@ -3,6 +3,7 @@ package ua.com.alevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.com.alevel.entity.AppProperties;
+import ua.com.alevel.mapper.ClassInitializer;
 import ua.com.alevel.util.CreatePropertyFromFileUtil;
 
 import java.util.Properties;
