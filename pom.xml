@@ -24,6 +24,7 @@
         <module>module_3</module>
         <module>unit_13_jpa_hibernate</module>
         <module>unit_11_reflection</module>
+        <module>unit_14_threads</module>
     </modules>
 
     <properties>
