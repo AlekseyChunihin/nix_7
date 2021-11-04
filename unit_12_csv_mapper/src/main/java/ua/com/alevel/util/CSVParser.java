@@ -1,13 +1,9 @@
 package ua.com.alevel.util;
 
-import ua.com.alevel.entity.Gender;
-import ua.com.alevel.entity.User;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CSVParser {
