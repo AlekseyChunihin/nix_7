@@ -20,11 +20,12 @@
         <module>unit_9_ionio</module>
         <module>module_2</module>
         <module>unit_10_jdbc</module>
-        <module>csv_mapper</module>
+<!--        <module>csv_mapper</module>-->
         <module>module_3</module>
         <module>unit_13_jpa_hibernate</module>
         <module>unit_11_reflection</module>
         <module>unit_14_threads</module>
+        <module>unit_15_servlets</module>
     </modules>
 
     <properties>
